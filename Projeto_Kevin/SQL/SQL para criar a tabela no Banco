@@ -1,0 +1,10 @@
+CREATE TABLE produto (
+	id_produto serial,
+	produto varchar(75),
+	data varchar(10),
+	tipo varchar(75),
+	valor integer,
+	responsavel varchar(75),
+	descricao varchar(1000),
+	imagem bytea
+);
