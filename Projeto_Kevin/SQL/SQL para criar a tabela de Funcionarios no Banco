@@ -1,7 +1,0 @@
-CREATE TABLE funcionario(
-	id_funcionario serial,
-	nome varchar(100),
-	idade integer, /*ou varchar(3)*/
-	dataNascimento(10),
-	imagem bytea
-);
