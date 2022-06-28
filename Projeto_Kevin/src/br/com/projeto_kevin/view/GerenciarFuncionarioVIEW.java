@@ -110,106 +110,106 @@ public class GerenciarFuncionarioVIEW extends javax.swing.JInternalFrame {
     /**
      * Método responsável por setar a posição do internalFrame.
      */
-//    public void setarPosicao() {
-//        Dimension d = this.getDesktopPane().getSize();
-//        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
-//    }// Fecha setarPosicao.
+    public void setarPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }// Fecha setarPosicao.
     
     /**
      * Método responsável por setar os campos do formulário.
      * 
      * @param id_funcionario, vindo da classe PrincipalVIEW.
      */
-//    public void setarCampos(int id_funcionario) {
-//        FuncionarioDTO funcionarioDTO = new FuncionarioDTO();
-//        FuncionarioCTR funcionarioCTR = new FuncionarioCTR();
-//        
-//        /**
-//         * Bug encontrado ao tentar trazer os dados do Banco de Dados de acordo 
-//         * com a linha selecionada na tabela, sendo assim, o sistema sempre trás 
-//         * os dados do primeiro item exibido na tabela
-//         */
-//        try {
-//            funcionarioDTO.setId_funcionario(id_funcionario);
-//            ResultSet rs = funcionarioCTR.consultarProduto(funcionarioDTO, 2);
-//            if (rs.next()) {
-//                nome.setText(rs.getString("nome"));
-//                dataNascimento.setText(rs.getString("dataNascimento"));
-//                idFuncionario.setText(rs.getString("id_funcionario"));
-//                idade.setText(rs.getString("idade"));
-//                ManipularImagemVIEW.exibeImagemLabel(rs.getBytes("imagem"), imagemPreview);
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Produto não encontrado!");
-//                nome.setText("");
-//                dataNascimento.setText("");
-//                idFuncionario.setText("");
-//                idade.setText("");
-//                imagemPreview.setIcon(new ImageIcon(""));
-//            }
-//        }
-//        catch (Exception ex) {
-//            System.out.println("Erro: " + ex.getMessage());
-//        }
-//        finally {
-//            funcionarioCTR.CloseDB();
-//        }
-//    }// Fecha o método setarCampos.
-//    
-//    /**
-//     * Método responsável por alterar os dados do produto.
-//     */
-//    private void alterarFuncionario() {
-//        try{
-//            FuncionarioCTR funcionarioCTR = new FuncionarioCTR();
-//            FuncionarioDTO funcionarioDTO = new FuncionarioDTO();
-//            
-//            funcionarioDTO.setNome(nome.getText());
-//            funcionarioDTO.setDataNascimento(dataNascimento.getText());
-//            funcionarioDTO.setId_funcionario(Integer.parseInt(idFuncionario.getText()));
-//            funcionarioDTO.setIdade(Integer.parseInt(idade.getText()));
-//            funcionarioDTO.setFuncionario_img(ManipularImagemVIEW.getImgBytes(imagem));
-//        
-//            JOptionPane.showMessageDialog(null, funcionarioCTR.alterarFuncionario(funcionarioDTO));
-//            
-//            limpaCampos();
-//            atualizarTabela();
-//        } // Fecha try.
-//        catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//        }// Fecha catch.
-//    }// Fecha o método alterarProduto.
-//    
-//    /**
-//     * Método responsável por excluir o produto.
-//     */
-//    private void excluirFuncionario() {
-//        try{
-//            FuncionarioCTR funcionarioCTR = new FuncionarioCTR();
-//            FuncionarioDTO funcionarioDTO = new FuncionarioDTO();
-//            
-//            funcionarioDTO.setId_funcionario(Integer.parseInt(idFuncionario.getText()));
-//            
-//            JOptionPane.showMessageDialog(null, funcionarioCTR.excluirFuncionario(funcionarioDTO));
-//            
-//            limpaCampos();
-//            atualizarTabela();
-//        } // Fecha try.
-//        catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//        }// Fecha catch.
-//    }// Fecha o método excluirProduto.
-//    
-//    /**
-//     * Método responsável por limpar os campos.
-//     */
-//    private void limpaCampos() {
-//        nome.setText("");
-//        dataNascimento.setText("");
-//        idFuncionario.setText("");
-//        idade.setText("");
-//        imagemPreview.setIcon(null);
-//        caminhoImagem.setText("");
-//    }// Fecha método limpaCampos.
+    public void setarCampos(int id_funcionario) {
+        FuncionarioDTO funcionarioDTO = new FuncionarioDTO();
+        FuncionarioCTR funcionarioCTR = new FuncionarioCTR();
+        
+        /**
+         * Bug encontrado ao tentar trazer os dados do Banco de Dados de acordo 
+         * com a linha selecionada na tabela, sendo assim, o sistema sempre trás 
+         * os dados do primeiro item exibido na tabela
+         */
+        try {
+            funcionarioDTO.setId_funcionario(id_funcionario);
+            ResultSet rs = funcionarioCTR.consultarProduto(funcionarioDTO, 2);
+            if (rs.next()) {
+                nome.setText(rs.getString("nome"));
+                dataNascimento.setText(rs.getString("dataNascimento"));
+                idFuncionario.setText(rs.getString("id_funcionario"));
+                idade.setText(rs.getString("idade"));
+                ManipularImagemVIEW.exibeImagemLabel(rs.getBytes("imagem"), imagemPreview);
+            } else {
+                JOptionPane.showMessageDialog(null, "Produto não encontrado!");
+                nome.setText("");
+                dataNascimento.setText("");
+                idFuncionario.setText("");
+                idade.setText("");
+                imagemPreview.setIcon(new ImageIcon(""));
+            }
+        }
+        catch (Exception ex) {
+            System.out.println("Erro: " + ex.getMessage());
+        }
+        finally {
+            funcionarioCTR.CloseDB();
+        }
+    }// Fecha o método setarCampos.
+    
+    /**
+     * Método responsável por alterar os dados do produto.
+     */
+    private void alterarFuncionario() {
+        try{
+            FuncionarioCTR funcionarioCTR = new FuncionarioCTR();
+            FuncionarioDTO funcionarioDTO = new FuncionarioDTO();
+            
+            funcionarioDTO.setNome(nome.getText());
+            funcionarioDTO.setDataNascimento(dataNascimento.getText());
+            funcionarioDTO.setId_funcionario(Integer.parseInt(idFuncionario.getText()));
+            funcionarioDTO.setIdade(Integer.parseInt(idade.getText()));
+            funcionarioDTO.setFuncionario_img(ManipularImagemVIEW.getImgBytes(imagem));
+        
+            JOptionPane.showMessageDialog(null, funcionarioCTR.alterarFuncionario(funcionarioDTO));
+            
+            limpaCampos();
+            atualizarTabela();
+        } // Fecha try.
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }// Fecha catch.
+    }// Fecha o método alterarProduto.
+    
+    /**
+     * Método responsável por excluir o produto.
+     */
+    private void excluirFuncionario() {
+        try{
+            FuncionarioCTR funcionarioCTR = new FuncionarioCTR();
+            FuncionarioDTO funcionarioDTO = new FuncionarioDTO();
+            
+            funcionarioDTO.setId_funcionario(Integer.parseInt(idFuncionario.getText()));
+            
+            JOptionPane.showMessageDialog(null, funcionarioCTR.excluirFuncionario(funcionarioDTO));
+            
+            limpaCampos();
+            atualizarTabela();
+        } // Fecha try.
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }// Fecha catch.
+    }// Fecha o método excluirProduto.
+    
+    /**
+     * Método responsável por limpar os campos.
+     */
+    private void limpaCampos() {
+        nome.setText("");
+        dataNascimento.setText("");
+        idFuncionario.setText("");
+        idade.setText("");
+        imagemPreview.setIcon(null);
+        caminhoImagem.setText("");
+    }// Fecha método limpaCampos.
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -413,15 +413,15 @@ public class GerenciarFuncionarioVIEW extends javax.swing.JInternalFrame {
 
         setBounds(0, 0, 810, 515);
     }// </editor-fold>//GEN-END:initComponents
-//
+
     private void mdl_tbl_funcionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mdl_tbl_funcionariosMouseClicked
-//        setarCampos(Integer.parseInt(String.valueOf(
-//                mdl_tbl_funcionarios.getValueAt(
-//                mdl_tbl_funcionarios.getSelectedRow(), 0))));
+        setarCampos(Integer.parseInt(String.valueOf(
+                mdl_tbl_funcionarios.getValueAt(
+                mdl_tbl_funcionarios.getSelectedRow(), 0))));
     }//GEN-LAST:event_mdl_tbl_funcionariosMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-//        alterarFuncionario();
+        alterarFuncionario();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnSelecionarImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarImagemActionPerformed
@@ -429,11 +429,11 @@ public class GerenciarFuncionarioVIEW extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSelecionarImagemActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-//        limpaCampos();
+        limpaCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-//        excluirFuncionario();
+        excluirFuncionario();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
