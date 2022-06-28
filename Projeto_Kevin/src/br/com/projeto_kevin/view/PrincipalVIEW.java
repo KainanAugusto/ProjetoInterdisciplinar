@@ -99,6 +99,18 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         funcionarioVIEW.setarPosicao();
     }// Fecha método abreFuncionarioVIEW.
     
+    private void abreClienteVIEW() {
+        ClienteVIEW clienteVIEW = new ClienteVIEW();
+        painelDesktop.add(clienteVIEW);
+        clienteVIEW.setVisible(true);
+        clienteVIEW.setarPosicao();
+    }
+     private void abreCompraVIEW() {
+        CompraVIEW compraVIEW = new CompraVIEW();
+         painelDesktop.add(compraVIEW);
+        compraVIEW.setVisible(true);
+//        gerenciarFuncionarioVIEW.setarPosicao();
+    }
 //    private void atualizarTabela(String nome) {
 //        ProdutoCTR produtoCTR = new ProdutoCTR();
 //        ProdutoDTO produtoDTO = new ProdutoDTO();
@@ -170,7 +182,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         GerenciarFuncionarioVIEW gerenciarFuncionarioVIEW = new GerenciarFuncionarioVIEW();
         painelDesktop.add(gerenciarFuncionarioVIEW);
         gerenciarFuncionarioVIEW.setVisible(true);
-        gerenciarFuncionarioVIEW.setarPosicao();
+//        gerenciarFuncionarioVIEW.setarPosicao();
         gerenciarFuncionarioVIEW.atualizarTabela();
     }// Fecha abreGerenciarFuncionarioVIEW.
     
@@ -197,6 +209,8 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         menuItemCadastro = new javax.swing.JMenuItem();
         menuItemGerenciar = new javax.swing.JMenuItem();
         itemMenuCliente = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -312,9 +326,31 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         menuCadastro.add(subMenuFuncionario);
 
         itemMenuCliente.setText("Cliente");
+        itemMenuCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMenuClienteActionPerformed(evt);
+            }
+        });
         menuCadastro.add(itemMenuCliente);
 
         barraMenu.add(menuCadastro);
+
+        jMenu1.setText("Compra");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setText("Compra");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        barraMenu.add(jMenu1);
 
         menuSair.setText("Sair");
         menuSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -384,6 +420,18 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         abreGerenciarFuncionarioVIEW();
     }//GEN-LAST:event_menuItemGerenciarActionPerformed
 
+    private void itemMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuClienteActionPerformed
+             abreClienteVIEW();
+    }//GEN-LAST:event_itemMenuClienteActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+           abreCompraVIEW();
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+           abreCompraVIEW();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -423,6 +471,8 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton btnAtualizarTabela;
     private javax.swing.JMenuItem itemMenuCliente;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel labelData;
     private javax.swing.JLabel labelInfo;
     private javax.swing.JLabel labelStatus;

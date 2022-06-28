@@ -31,6 +31,7 @@ import br.com.projeto_kevin.dto.ClienteDTO;
 import br.com.projeto_kevin.ctr.ClienteCTR;
 public class ClienteVIEW extends javax.swing.JInternalFrame {
 
+   
     /**
      * Creates new form ClienteVIEW
      */
@@ -46,7 +47,11 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
     DefaultTableModel modelo_jtl_consultar_cliente; // variavel para guardar o modelo da tabela
     
     
-    
+    public void setarPosicao() {
+        Dimension d = this.getDesktopPane().getSize();
+        this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+    }// Fecha setarPosicao.
+
     private void liberaCampos(boolean a) {
         nome.setEnabled(a);
         numero.setEnabled(a);
@@ -71,6 +76,7 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             System.out.println("Erro ao Gravar" + e.getMessage());
         }
+        gravar_alterar++;
     }
      
      
@@ -86,7 +92,7 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
 
                 numero.setText(rs.getString("numero"));
                 cpf.setText(rs.getString("cpf"));
-                gravar_alterar = 2;
+               
 
             }
         } catch (Exception erTab) {
@@ -100,7 +106,7 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
     
     private void liberaBotoes(boolean a, boolean b, boolean c, boolean d, boolean e) {
         btnSalvar.setEnabled(b);
-        btnExcluir.setEnabled(d);
+       
         btnSair.setEnabled(e);
     }
     
@@ -133,7 +139,6 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
         cpf = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
 
         jLabel1.setText("Cliente");
 
@@ -151,44 +156,42 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
         });
 
         btnSair.setText("Sair");
-
-        btnExcluir.setText("Excluir");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(numero))
+                                .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addComponent(btnSalvar)
-                                        .addGap(68, 68, 68)
-                                        .addComponent(btnSair)
-                                        .addGap(58, 58, 58)
-                                        .addComponent(btnExcluir)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(btnSalvar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSair))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(243, 243, 243)
-                .addComponent(jLabel1)
+                        .addGap(243, 243, 243)
+                        .addComponent(jLabel1)))
                 .addContainerGap(412, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -208,19 +211,19 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(btnSair)
-                    .addComponent(btnExcluir))
-                .addGap(78, 78, 78))
+                    .addComponent(btnSair))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-    if (gravar_alterar == 1) {
+       gravar_alterar++;
+        if (gravar_alterar == 1) {
             gravar();
             gravar_alterar = 0;
         } else {
@@ -237,9 +240,12 @@ public class ClienteVIEW extends javax.swing.JInternalFrame {
         liberaBotoes(true, false, false, false, true);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+this.dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField cpf;
